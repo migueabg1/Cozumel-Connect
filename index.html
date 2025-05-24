@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with Fellow Guests | Sunset Villa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1em;
+        }
+        
+        .post-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .post-form h3 {
+            margin-bottom: 20px;
+            color: #4a5568;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .post-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .post-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .posts-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .posts-section h3 {
+            margin-bottom: 20px;
+            color: #4a5568;
+        }
+        
+        .post {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .post-name {
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        .post-time {
+            color: #a0aec0;
+            font-size: 0.9em;
+        }
+        
+        .post-activity {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        
+        .post-message {
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .post-contact {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #4a5568;
+        }
+        
+        .sample-posts {
+            opacity: 0.8;
+        }
+        
+        .activity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #4a5568;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .post-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .post-activity {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏖️ Connect with Fellow Guests</h1>
+            <p>Meet other travelers staying at Sunset Villa • Find activity partners • Share local discoveries</p>
+        </div>
+        
+        <div class="post-form">
+            <h3>✨ Share What You're Up To</h3>
+            <form id="guestForm">
+                <div class="form-group">
+                    <label for="guestName">Your Name (or nickname)</label>
+                    <input type="text" id="guestName" placeholder="e.g., Sarah & Mike" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="activity">Activity Type</label>
+                    <select id="activity" required>
+                        <option value="">Choose activity...</option>
+                        <option value="Coffee">☕ Coffee & Chat</option>
+                        <option value="Dining">🍽️ Dinner Plans</option>
+                        <option value="Exploring">🗺️ Local Exploring</option>
+                        <option value="Beach">🏖️ Beach Day</option>
+                        <option value="Nightlife">🌙 Evening Out</option>
+                        <option value="Fitness">💪 Workout Buddy</option>
+                        <option value="Shopping">🛍️ Shopping Trip</option>
+                        <option value="Other">🎯 Other Activity</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" rows="3" placeholder="e.g., Looking for dinner companions tonight around 7pm! Know any good local spots?" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact">How to reach you</label>
+                    <input type="text" id="contact" placeholder="e.g., Text me: 555-123-4567 or Find me in Room 3B" required>
+                </div>
+                
+                <button type="submit" class="post-btn">Post & Connect! 🚀</button>
+            </form>
+        </div>
+        
+        <div class="posts-section">
+            <h3>🤝 Recent Guest Posts</h3>
+            <div id="postsContainer">
+                <!-- Sample posts to show how it works -->
+                <div class="post sample-posts">
+                    <div class="post-header">
+                        <div>
+                            <span class="post-name">Emma & Jake</span>
+                            <span class="post-activity">🍽️ Dining</span>
+                        </div>
+                        <span class="post-time">2 hours ago</span>
+                    </div>
+                    <div class="post-message">Anyone want to join us for tapas tonight? We heard about this amazing place called Casa Marina! Looking for fun couple to double date with 😊</div>
+                    <div class="post-contact">📱 Text Emma: 555-789-0123 • Room 2A</div>
+                </div>
+                
+                <div class="post sample-posts">
+                    <div class="post-header">
+                        <div>
+                            <span class="post-name">Alex</span>
+                            <span class="post-activity">🗺️ Exploring</span>
+                        </div>
+                        <span class="post-time">5 hours ago</span>
+                    </div>
+                    <div class="post-message">Solo traveler here! Planning to check out the Saturday market tomorrow morning around 9am. Would love some company to explore and grab coffee after!</div>
+                    <div class="post-contact">💬 Knock on Room 1C or text 555-456-7890</div>
+                </div>
+                
+                <div class="post sample-posts">
+                    <div class="post-header">
+                        <div>
+                            <span class="post-name">Maria & Sam</span>
+                            <span class="post-activity">🏖️ Beach</span>
+                        </div>
+                        <span class="post-time">1 day ago</span>
+                    </div>
+                    <div class="post-message">Beach day tomorrow if weather holds! We've got extra umbrellas and a cooler. Meet us by the blue car around 10am?</div>
+                    <div class="post-contact">🏠 Room 4B • maria.vacay@email.com</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store posts in memory (in real implementation, you'd use a backend)
+        let posts = [];
+        
+        document.getElementById('guestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('guestName').value;
+            const activity = document.getElementById('activity').value;
+            const message = document.getElementById('message').value;
+            const contact = document.getElementById('contact').value;
+            
+            // Create new post object
+            const newPost = {
+                name: name,
+                activity: activity,
+                message: message,
+                contact: contact,
+                time: new Date()
+            };
+            
+            // Add to posts array
+            posts.unshift(newPost);
+            
+            // Display the new post
+            displayPosts();
+            
+            // Clear form
+            this.reset();
+            
+            // Show success message
+            alert('🎉 Your post is live! Other guests can now see it and reach out to connect.');
+        });
+        
+        function displayPosts() {
+            const container = document.getElementById('postsContainer');
+            const samplePosts = container.innerHTML; // Keep sample posts
+            
+            let postsHTML = '';
+            
+            posts.forEach(post => {
+                const timeAgo = getTimeAgo(post.time);
+                const activityIcon = getActivityIcon(post.activity);
+                
+                postsHTML += `
+                    <div class="post">
+                        <div class="post-header">
+                            <div>
+                                <span class="post-name">${post.name}</span>
+                                <span class="post-activity">${activityIcon} ${post.activity}</span>
+                            </div>
+                            <span class="post-time">${timeAgo}</span>
+                        </div>
+                        <div class="post-message">${post.message}</div>
+                        <div class="post-contact">📞 ${post.contact}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = postsHTML + samplePosts;
+        }
+        
+        function getActivityIcon(activity) {
+            const icons = {
+                'Coffee': '☕',
+                'Dining': '🍽️',
+                'Exploring': '🗺️',
+                'Beach': '🏖️',
+                'Nightlife': '🌙',
+                'Fitness': '💪',
+                'Shopping': '🛍️',
+                'Other': '🎯'
+            };
+            return icons[activity] || '🎯';
+        }
+        
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            
+            if (diffMins < 60) {
+                return `${diffMins} min ago`;
+            } else if (diffMins < 1440) {
+                return `${Math.floor(diffMins / 60)} hours ago`;
+            } else {
+                return `${Math.floor(diffMins / 1440)} days ago`;
+            }
+        }
+    </script>
+</body>
+</html>
