@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect with Fellow Guests | Sunset Villa</title>
+    <title>Connect with Fellow Guests | Cozumel Vacation Rentals</title>
     <style>
         * {
             margin: 0;
@@ -203,7 +203,7 @@
     <div class="container">
         <div class="header">
             <h1>🏖️ Connect with Fellow Guests</h1>
-            <p>Meet other travelers staying at Sunset Villa • Find activity partners • Share local discoveries</p>
+            <p>Meet other travelers staying at Cozumel Vacation Rentals • Find activity partners • Share local discoveries</p>
         </div>
         
         <div class="post-form">
@@ -287,8 +287,13 @@
     </div>
 
     <script>
-        // Store posts in memory (in real implementation, you'd use a backend)
-        let posts = [];
+        // Store posts in localStorage so they persist across page refreshes
+        let posts = JSON.parse(localStorage.getItem('cozumelGuestPosts')) || [];
+        
+        // Display existing posts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            displayPosts();
+        });
         
         document.getElementById('guestForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -309,6 +314,9 @@
             
             // Add to posts array
             posts.unshift(newPost);
+            
+            // Save to localStorage so posts persist
+            localStorage.setItem('cozumelGuestPosts', JSON.stringify(posts));
             
             // Display the new post
             displayPosts();
